@@ -1,6 +1,5 @@
 import { Navigate, Outlet, useLocation } from 'react-router';
-import Header from './pages/Header';
-import Footer from './pages/Footer';
+import { Header, Footer } from '@/pages';
 import { ROUTES } from './constants/routes';
 import { useAuth } from './context/AuthContext';
 

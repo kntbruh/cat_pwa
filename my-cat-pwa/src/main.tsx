@@ -4,14 +4,12 @@ import './index.css';
 import App from './App.tsx';
 import { registerSW } from 'virtual:pwa-register';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import Cats from './pages/Cats.tsx';
-import Info from './pages/Info.tsx';
-import ErrorPage from './pages/ErrorPage.tsx';
-import Cat from './pages/Cat.tsx';
+import { Cat, Cats, Info, ErrorPage } from '@/pages';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Login from './pages/auth/Login.tsx';
+import { Login } from '@/pages/auth';
 import { ROUTES } from './constants/routes.ts';
 import { AuthProvider } from './context/AuthContext.tsx';
+import { Toaster } from 'react-hot-toast';
 
 registerSW({
   onNeedRefresh() {
@@ -53,6 +51,15 @@ createRoot(document.getElementById('root')!).render(
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+        <Toaster
+          toastOptions={{
+            style: {
+              border: '2px solid #3333',
+              padding: '16px 16px',
+              marginTop: '1px',
+            },
+          }}
+        />
       </QueryClientProvider>
     </AuthProvider>
   </StrictMode>

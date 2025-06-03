@@ -1,13 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
 import { catQueryOptions } from '../services/catsService';
 import { Link, href } from 'react-router';
 import { ROUTES } from '../constants/routes';
+import { useRef } from 'react';
 
-function Cats() {
+export function Cats() {
   const { data, isPending, isFetching, refetch, error } = useQuery(
     catQueryOptions()
   );
+
+  const buttonRef = useRef(null);
+
+  const handleClick = () => {
+    if (buttonRef.current) {
+      buttonRef.current.focus();
+    }
+  };
 
   if (error) return <div>Error: {error.message}</div>;
   if (!data) return <div>No cat found</div>;
@@ -16,6 +24,7 @@ function Cats() {
     <div className='grid place-items-center m-16'>
       <div className='text-center text-4xl'>Cats</div>
       <button
+        ref={buttonRef}
         onClick={() => refetch()}
         className='text-bold my-5 bg-purple-300 w-50 h-10 rounded-xl text-2xl
          hover:bg-purple-400 transition-colors'
@@ -42,5 +51,3 @@ function Cats() {
     </div>
   );
 }
-
-export default Cats;

@@ -1,23 +1,28 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { ROUTES } from '../../constants/routes';
+import toast from 'react-hot-toast';
+import { Button } from '@/components/Button';
+import { BUTTON_KIND, BUTTON_SIZE } from '@/components/Button/ButtonTypes';
 
-function Login() {
+export function Login() {
   const [error, setError] = useState('');
   const { signIn } = useAuth();
   const navigate = useNavigate();
 
-  const { control, handleSubmit, setValue, register, resetField } = useForm({
+  const { handleSubmit, register } = useForm({
     defaultValues: { email: '', password: '' },
   });
 
   const onSubmit = (data: { email: string; password: string }) => {
     const success = signIn(data.email, data.password);
     if (success) {
+      toast.success('Success Sign in!');
       navigate(ROUTES.CATS);
     } else {
+      toast.error('Неверный email или пароль');
       setError('Неверный email или пароль');
     }
   };
@@ -45,17 +50,14 @@ function Login() {
             className='border border-gray-300 p-2 rounded-md'
             required
           />
-
-          <button
+          <Button
             type='submit'
-            className='bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600'
-          >
-            Sign in
-          </button>
+            text={'Sign in'}
+            size={BUTTON_SIZE.L}
+            kind={BUTTON_KIND.PRIMARY}
+          />
         </form>
       </div>
     </div>
   );
 }
-
-export default Login;

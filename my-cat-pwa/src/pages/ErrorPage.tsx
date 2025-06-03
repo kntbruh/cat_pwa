@@ -1,7 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router';
 
-function ErrorPage() {
+export function ErrorPage() {
   return (
     <>
       <div className='text-red-600 text-6xl m-5 text-center'>
@@ -16,5 +15,3 @@ function ErrorPage() {
     </>
   );
 }
-
-export default ErrorPage;

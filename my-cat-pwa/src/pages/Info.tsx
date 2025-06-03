@@ -1,7 +1,3 @@
-import React from 'react';
-
-function Info() {
+export function Info() {
   return <div>Info</div>;
 }
-
-export default Info;

@@ -23,7 +23,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   // Моковые данные для проверки
   const validEmail = 'test@test.com';
-  const validPassword = 'pass123';
+  const validPassword = 'terra123';
 
   const signIn = (email: string, password: string) => {
     if (email === validEmail && password === validPassword) {

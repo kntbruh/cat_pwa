@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA, type ManifestOptions } from 'vite-plugin-pwa';
 import tailwindcss from '@tailwindcss/vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 const manifest: Partial<ManifestOptions> | false = {
   theme_color: '#6538a8',
@@ -38,5 +39,6 @@ export default defineConfig({
       injectRegister: 'auto',
     }),
     tailwindcss(),
+    tsconfigPaths(),
   ],
 });

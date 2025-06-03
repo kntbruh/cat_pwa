@@ -1,6 +1,4 @@
-import React from 'react';
-
-function Footer() {
+export function Footer() {
   return (
     <div
       className='shadow-popover fixed inset-x-0 bottom-0 z-20 rounded-t-2xl border-gray-700
@@ -11,5 +9,3 @@ function Footer() {
     </div>
   );
 }
-
-export default Footer;
